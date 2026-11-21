@@ -1,0 +1,752 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+    color: #603b68;
+}
+
+.screen {
+    min-height: 100vh;
+    padding: 30px 20px;
+    background: linear-gradient(
+        135deg,
+        #ffd6e7,
+        #e4d7ff,
+        #c9edff
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.welcome-content {
+    max-width: 650px;
+    z-index: 2;
+}
+
+.subtitle {
+    letter-spacing: 4px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(35px, 7vw, 65px);
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: #d34d91;
+}
+
+.description {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+button {
+    background: #d34d91;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.07);
+    background: #a93c7b;
+}
+
+.floating {
+    position: absolute;
+    font-size: 40px;
+    animation: float 4s infinite ease-in-out;
+}
+
+.floating:nth-child(1) {
+    top: 10%;
+    left: 10%;
+}
+
+.floating:nth-child(2) {
+    top: 20%;
+    right: 12%;
+}
+
+.floating:nth-child(3) {
+    bottom: 15%;
+    left: 15%;
+}
+
+.floating:nth-child(4) {
+    bottom: 20%;
+    right: 15%;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+}
+
+.rooms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+#room-content {
+    width: min(100%, 650px);
+    padding: 20px;
+}
+
+#room-content img {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+@media (max-width: 600px) {
+
+    .subtitle {
+        letter-spacing: 2px;
+    }
+
+    .rooms {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .rooms button {
+        width: 100%;
+        margin: 7px 0;
+    }
+}
+.gift-reveal {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 25px;
+    margin-top: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    animation: appear 0.5s ease;
+}
+
+.gift-animation {
+    font-size: 75px;
+    animation: bounce 0.8s infinite alternate;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-12px);
+    }
+}
+/* GALLERY DESIGN */
+
+.gallery-subtitle {
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 15px;
+}
+
+.polaroid {
+    background: white;
+    padding: 12px 12px 25px;
+    border-radius: 5px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+
+    transform: rotate(-2deg);
+    transition: 0.3s ease;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.06);
+}
+
+.polaroid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.polaroid p {
+    margin-top: 15px;
+    font-family: cursive;
+    font-size: 15px;
+    color: #9d5185;
+}
+
+/* ENLARGED PHOTO */
+
+.photo-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 15, 35, 0.9);
+    z-index: 1000;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    cursor: pointer;
+}
+
+.photo-modal img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 8px solid white;
+    border-radius: 5px;
+}
+
+.close-photo {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+}
+
+/* MOBILE GALLERY */
+
+@media (max-width: 500px) {
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .polaroid {
+        max-width: 300px;
+        width: 100%;
+        margin: auto;
+    }
+
+}/* SECRET CHAMBER */
+
+.secret-room {
+    background: rgba(255,255,255,0.45);
+    padding: 25px 15px;
+    border-radius: 25px;
+}
+
+.secret-stars {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+
+.secret-stars button {
+    font-size: 35px;
+    background: white;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    padding: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.secret-stars button:hover {
+    transform: rotate(20deg) scale(1.2);
+}
+
+.secret-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 20px;
+    animation: appear 0.5s ease;
+}
+
+.secret-card p {
+    line-height: 1.8;
+    margin-top: 15px;
+    font-size: 17px;
+}
+/* SECRET LETTER ROOM */
+
+.letter-room {
+    padding: 25px 10px;
+}
+
+.envelope {
+    background: #f5a9c9;
+    max-width: 250px;
+    margin: 30px auto;
+    padding: 35px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.envelope:hover {
+    transform: scale(1.07);
+}
+
+.envelope-icon {
+    font-size: 75px;
+}
+
+.envelope p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.letter-paper {
+    background: #fffaf0;
+    color: #75516c;
+    padding: 30px 22px;
+    margin-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: left;
+    line-height: 1.9;
+    animation: appear 0.8s ease;
+}
+
+.letter-paper h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d34d91;
+}
+
+#typed-letter {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+/* BIRTHDAY CAKE ROOM */
+
+.birthday-room {
+    padding: 25px 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.birthday-cake {
+    margin: 50px auto 35px;
+    width: 230px;
+    position: relative;
+}
+
+.candles {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 35px;
+    margin-bottom: -5px;
+    position: relative;
+    z-index: 2;
+}
+
+.cake-top {
+    height: 45px;
+    background: #ffb6d1;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.cake-middle {
+    height: 45px;
+    background: #d979a9;
+    border-radius: 0 0 15px 15px;
+    margin-top: -5px;
+}
+
+.cake-bottom {
+    height: 45px;
+    background: #a95b91;
+    border-radius: 0 0 20px 20px;
+}
+
+.celebration-message {
+    background: white;
+    border-radius: 20px;
+    padding: 25px 10px;
+    margin-top: 25px;
+    animation: appear 0.6s ease;
+}
+
+.confetti {
+    position: absolute;
+    top: -30px;
+    font-size: 25px;
+    animation: fall 3s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(500px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#blow-button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+/* 🎀 BIRTHDAY WONDERLAND DECORATIONS */
+
+#welcome {
+    background:
+        radial-gradient(circle at 10% 20%, #fff0f6 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, #fce4ff 0%, transparent 30%),
+        linear-gradient(135deg, #ffd6e7, #e4d7ff, #c9edff);
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 5;
+}
+
+/* Decoration container */
+
+.welcome-decorations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Common image style */
+
+.deco {
+    position: absolute;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(130, 75, 120, 0.18);
+    animation: decorationFloat 4s ease-in-out infinite;
+}
+
+/* Cats */
+
+.deco-cat {
+    width: 155px;
+    height: 155px;
+}
+
+.cat-one {
+    left: 4%;
+    top: 20%;
+    transform: rotate(-8deg);
+}
+
+.cat-two {
+    right: 4%;
+    bottom: 18%;
+    animation-delay: 1.5s;
+}
+
+/* Flowers */
+
+.deco-flower {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.flower-one {
+    right: 15%;
+    top: 12%;
+    animation-delay: 0.8s;
+}
+
+/* Birthday cake */
+
+.deco-cake {
+    width: 115px;
+    height: 115px;
+    left: 12%;
+    bottom: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes decorationFloat {
+    0%, 100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -15px;
+    }
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 600px) {
+
+    .deco-cat {
+        width: 90px;
+        height: 90px;
+    }
+
+    .cat-one {
+        top: 8%;
+        left: 3%;
+    }
+
+    .cat-two {
+        right: 3%;
+        bottom: 8%;
+    }
+
+    .deco-flower {
+        width: 60px;
+        height: 60px;
+        right: 5%;
+        top: 15%;
+    }
+
+    .deco-cake {
+        width: 75px;
+        height: 75px;
+        left: 5%;
+        bottom: 10%;
+    }
+
+    .welcome-content {
+        max-width: 100%;
+    }
+}
+/* 🎂 CUTE ANIMATED BIRTHDAY CAKE */
+
+/* Whole cake gently floats */
+.birthday-cake {
+    animation: cakeFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 12px 12px rgba(180, 90, 140, 0.2));
+}
+
+@keyframes cakeFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Cake frosting */
+.cake-top {
+    background: linear-gradient(
+        135deg,
+        #ffc1dc,
+        #ff8fbd,
+        #ffd6e7
+    );
+    position: relative;
+    box-shadow: inset 0 5px 8px rgba(255,255,255,0.5);
+}
+
+/* Tiny colourful sprinkles */
+.cake-top::after {
+    content: "✦  •  ✦  •  ✦";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    color: #fff8b5;
+    font-size: 15px;
+    letter-spacing: 5px;
+}
+
+/* Middle layer */
+.cake-middle {
+    background: linear-gradient(
+        90deg,
+        #e98ab8,
+        #ffc1dc,
+        #e98ab8
+    );
+    position: relative;
+}
+
+/* Cute little cake face */
+.cake-middle::after {
+    content: "˶ᵔ ᵕ ᵔ˶";
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    color: #963e72;
+    font-size: 17px;
+}
+
+/* Bottom layer */
+.cake-bottom {
+    background: linear-gradient(
+        90deg,
+        #bd70aa,
+        #e6a0d0,
+        #bd70aa
+    );
+    box-shadow: inset 0 -5px 8px rgba(120,50,100,0.15);
+}
+
+/* Candle animation */
+.candles {
+    animation: candleWiggle 1.5s ease-in-out infinite alternate;
+    transform-origin: bottom center;
+}
+
+@keyframes candleWiggle {
+    from {
+        transform: rotate(-2deg);
+    }
+    to {
+        transform: rotate(2deg);
+    }
+}
+
+/* Cake celebration message */
+.celebration-message {
+    border: 2px dashed #f3a4c9;
+    background: #fff7fb;
+}
+/* YOU MADE IT PAGE DECORATIONS */
+
+#main {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fff0f6, #fce4f2, #f8eaff);
+    padding: 60px 20px;
+}
+
+.main-decorations {
+    pointer-events: none;
+}
+
+.main-cat {
+    position: absolute;
+    width: 145px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 8px 20px rgba(150, 80, 130, 0.2);
+    animation: catFloat 3s ease-in-out infinite;
+}
+
+.cat-left {
+    top: 15%;
+    left: 5%;
+}
+
+.cat-right {
+    top: 15%;
+    right: 5%;
+    animation-delay: 1s;
+}
+
+.main-flower,
+.main-sparkle {
+    position: absolute;
+    font-size: 35px;
+    animation: catFloat 3s ease-in-out infinite;
+}
+
+.flower-left {
+    left: 12%;
+    bottom: 15%;
+}
+
+.flower-right {
+    right: 12%;
+    bottom: 15%;
+    animation-delay: 1s;
+}
+
+.sparkle-one {
+    top: 12%;
+    left: 35%;
+}
+
+.sparkle-two {
+    bottom: 20%;
+    right: 35%;
+}
+
+@keyframes catFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(3deg);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .main-cat {
+        width: 85px;
+        height: 85px;
+    }
+
+    .cat-left {
+        top: 5%;
+        left: 3%;
+    }
+
+    .cat-right {
+        top: 5%;
+        right: 3%;
+    }
+
+    .main-flower,
+    .main-sparkle {
+        font-size: 23px;
+    }
+}

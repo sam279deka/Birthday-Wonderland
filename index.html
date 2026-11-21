@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Wonderland 🎂</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Welcome Screen -->
+    <section id="welcome" class="screen">
+<!-- Cute Welcome Decorations -->
+<div class="welcome-decorations">
+
+    <img
+        src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400"
+        class="deco deco-cat cat-one"
+        alt="Cute cat">
+
+    <img
+        src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400"
+        class="deco deco-cat cat-two"
+        alt="Cute kitten">
+
+    <img
+        src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=300"
+        class="deco deco-flower flower-one"
+        alt="Flowers">
+
+    <img
+        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300"
+        class="deco deco-cake"
+        alt="Birthday cake">
+
+</div>
+        <div class="floating">🎈</div>
+        <div class="floating">✨</div>
+        <div class="floating">🎀</div>
+        <div class="floating">🌸</div>
+
+        <div class="welcome-content">
+
+            <p class="subtitle">A LITTLE SURPRISE AWAITS YOU</p>
+
+            <h1>Happiest Birthday<br>
+                <span>Priyakhee! 🎂🥳</span>
+            </h1>
+
+            <p class="description">
+                A little world filled with memories,
+                surprises and happiness.
+            </p>
+
+            <button onclick="enterWebsite()">
+                LET THE MAGIC BEGIN ✨
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Main Website -->
+    <section id="main" class="screen hidden">
+<div class="main-decorations">
+    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400"
+         class="main-cat cat-left" alt="Cute cat">
+
+    <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400"
+         class="main-cat cat-right" alt="Cute kitten">
+
+    <span class="main-flower flower-left">🌸</span>
+    <span class="main-flower flower-right">🌷</span>
+    <span class="main-sparkle sparkle-one">✨</span>
+    <span class="main-sparkle sparkle-two">💗</span>
+</div>
+        <h1>You've made it! 🎉</h1>
+
+        <p>Your little adventure begins here.</p>
+
+        <div class="rooms">
+
+            <button onclick="showRoom('gifts')">🎁 Gift Room</button>
+
+            <button onclick="showRoom('letter')">💌 Secret Letter</button>
+
+            <button onclick="showRoom('cake')">🎂 Birthday Cake</button>
+
+        </div>
+
+        <div id="room-content"></div>
+
+    </section>
+<audio id="background-music" loop preload="auto">
+    <source src="music/the_mountain-happy-birthday-508020.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
